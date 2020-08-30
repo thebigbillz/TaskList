@@ -10,4 +10,35 @@ loadEventListeners();
 
 function loadEventListeners() {
   //Add Task
+  form.addEventListener("submit", addTask);
+}
+
+function addTask(e) {
+  if (!taskInput.value) {
+    alert("Task Required");
+  }
+  //Create li
+  const li = document.createElement("li");
+  //Add Class
+  li.className = "collection-item";
+  //Add Text
+  li.innerText = taskInput.value;
+
+  //Create Link
+  const link = document.createElement("a");
+  // Add Class
+  link.className = "delete-item secondary-content";
+  //Add Icon
+  link.innerHTML = '<i class="fa fa-remove"></i>';
+  // Add Link to Li
+  li.appendChild(link);
+  // Append Child to Ul
+  taskList.appendChild(li);
+
+  console.log(li);
+
+  //Clear Input
+  taskInput.value = "";
+
+  e.preventDefault();
 }
